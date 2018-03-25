@@ -16,6 +16,19 @@ public:
 		bool print_view;
 		int num_visit;
 	};
+
+	void NULL_board()
+	{
+		for (int i = 0; i < SIZE_X; ++i)
+			for (int j = 0; j < SIZE_Y; ++j)
+				maze[i][j] = { 0 };
+	}
+
+	bool checkxy(int x, int y)
+	{
+		return maze[y][x].print_view;
+	}
+
 	//check if a the cell have more than 1 neighbor
 	bool check(int x, int y)
 	{
@@ -143,12 +156,6 @@ public:
 			break;
 		}
 	}
-
-	~maze_maker();
-
-private:
-	member maze[SIZE_X][SIZE_Y] = { 0 };
-	int choice;
 	void gotoxy(int y, int x)
 	{
 		COORD coord;
@@ -156,17 +163,29 @@ private:
 		coord.Y = x;
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 	}
+
+	~maze_maker();
+
+private:
+	member maze[SIZE_X][SIZE_Y] = { 0 };
+	int choice;
+
 };
 
 maze_maker::maze_maker()
 {
 	srand((unsigned)time(NULL));
-	print_board();
-	maze_builder(0, SIZE_Y / 2, 0);
 }
 
 maze_maker::~maze_maker()
 {
 	gotoxy(0, SIZE_X);
-	cout << "have fun" << endl;
+	cout << "have fun!" << endl;
+	cout << "enter a char to sybolyse your hero." << endl;
+	cout << "press q to quit, * to restart the maze, p to begin the same maze." << endl;
+	gotoxy(SIZE_Y, SIZE_X);
+	maze[0][SIZE_Y / 2].print_view = 1;
+	maze[SIZE_X - 1][SIZE_Y / 2].print_view = 1;
 }
+
+
