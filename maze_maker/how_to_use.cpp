@@ -28,6 +28,8 @@ int main()
 		f.~maze_maker();
 		win = false;
 		hero = _getch();
+		f.gotoxy(0, SIZE_X + 1);
+		cout << "press q to quit, * to restart the maze, p to begin the same maze." << endl;
 		f.gotoxy(SIZE_Y / 2, 0);
 		cout << hero;
 		do {
@@ -101,6 +103,7 @@ int main()
 			cout << "you are victorious!!!" << endl;
 		else
 			cout << "what a looser!!!" << endl;
+		f.gotoxy(0, SIZE_X + 2);
 		system("pause");
 		system("cls");
 		cout << "do you want to play again?[y/n]" << endl;

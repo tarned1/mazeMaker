@@ -182,7 +182,6 @@ maze_maker::~maze_maker()
 	gotoxy(0, SIZE_X);
 	cout << "have fun!" << endl;
 	cout << "enter a char to sybolyse your hero." << endl;
-	cout << "press q to quit, * to restart the maze, p to begin the same maze." << endl;
 	gotoxy(SIZE_Y, SIZE_X);
 	maze[0][SIZE_Y / 2].print_view = 1;
 	maze[SIZE_X - 1][SIZE_Y / 2].print_view = 1;
